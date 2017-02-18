@@ -24,9 +24,10 @@ let getUsers = () => {
 
 /**
  * getUser takes an ID and returns a user
+ * @param {number} userId - The ID of the user.
  */
 
-let getUser = (id) => {
+let getUser = (userId) => {
     fetch(rootAPI + `users/${id}`)
         .then((response) => {
             return response;
@@ -36,6 +37,7 @@ let getUser = (id) => {
 
 /**
  * getPosts takes an userId and returns a user's 5 most recent posts
+ * @param {number} userId - The ID of the user.
  */
 
 let getPosts = (userId) => {
@@ -50,6 +52,7 @@ let getPosts = (userId) => {
 
 /**
  * viewPost takes a postId and returns title, and body
+ * @param {number} postId - The ID of the post.
  */
 
 let viewPost = (postId) => {
@@ -62,6 +65,7 @@ let viewPost = (postId) => {
 
 /**
  * viewComments takes a postId and returns that posts comments
+ * @param {number} postId - The ID of the post.
  */
 
 let viewComments = (postId) => {
@@ -74,6 +78,7 @@ let viewComments = (postId) => {
 
 /**
  * getAlbums takes a userId and returns a user's albums
+ * @param {number} userId - The ID of the user.
  */
 
 let getAlbums = (userId) => {
@@ -88,6 +93,7 @@ let getAlbums = (userId) => {
 
 /**
  * getTodos takes a userId and returns a user's todos
+ * @param {number} userId - The ID of the user.
  */
 
 let getTodos = (userId) => {
@@ -102,6 +108,7 @@ let getTodos = (userId) => {
 
 /**
  * buildProfile takes a userId and builds a user's profile
+ * @param {number} userId - The ID of the user.
  */
 
 let buildProfile = (userId) => {
