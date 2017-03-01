@@ -12,7 +12,7 @@ let rootAPI = "https://jsonplaceholder.typicode.com/";
  */
 
 function getUsers() {
-    return fetch(rootAPI + `users`)
+    return fetch(`${rootAPI}users`)
         .then((response) => {
             return response;
         }, (err) => {
@@ -28,7 +28,7 @@ function getUsers() {
  */
 
 function getUser(userId) {
-    return fetch(rootAPI + `users/${id}`)
+    return fetch(`${rootAPI}users/${id}`)
         .then((response) => {
             return response;
         });
@@ -98,7 +98,7 @@ function getAlbums(userId) {
 
 function getTodos(userId) {
     let todos = [];
-    fetch(rootAPI + `todos/${userId}`)
+    fetch(`${rootAPI}todos/${userId}`)
         .then((response) => {
             todos.push(response);
         });
