@@ -11,15 +11,15 @@ let rootAPI = "https://jsonplaceholder.typicode.com/";
  * getUsers returns all users
  */
 
-let getUsers = () => {
-    fetch(rootAPI + `users`)
+function getUsers() {
+    return fetch(rootAPI + `users`)
         .then((response) => {
             return response;
         }, (err) => {
             console.log("Error:", err);
             throw err;
         });
-};
+}
 
 
 /**
@@ -27,12 +27,12 @@ let getUsers = () => {
  * @param {number} userId - The ID of the user.
  */
 
-let getUser = (userId) => {
-    fetch(rootAPI + `users/${id}`)
+function getUser(userId) {
+    return fetch(rootAPI + `users/${id}`)
         .then((response) => {
             return response;
         });
-};
+}
 
 
 /**
@@ -40,14 +40,14 @@ let getUser = (userId) => {
  * @param {number} userId - The ID of the user.
  */
 
-let getPosts = (userId) => {
+function getPosts(userId) {
     let posts = [];
-    fetch(rootAPI + `posts/${userId}`)
+    fetch(`${rootAPI}posts/${userId}`)
         .then((response) => {
             posts.push(response);
         });
     return posts;
-};
+}
 
 
 /**
@@ -55,12 +55,12 @@ let getPosts = (userId) => {
  * @param {number} postId - The ID of the post.
  */
 
-let viewPost = (postId) => {
-    fetch(rootAPI + `posts/${postId}`)
+function viewPost(postId) {
+    return fetch(`${rootAPI}posts/${postId}`)
         .then((response) => {
             return response;
         });
-};
+}
 
 
 /**
@@ -68,12 +68,12 @@ let viewPost = (postId) => {
  * @param {number} postId - The ID of the post.
  */
 
-let viewComments = (postId) => {
-    fetch(rootAPI + `posts/${postId}/comments`)
+function viewComments(postId) {
+    return fetch(`${rootAPI}posts/${postId}/comments`)
         .then((response) => {
             return response;
         });
-};
+}
 
 
 /**
@@ -81,14 +81,14 @@ let viewComments = (postId) => {
  * @param {number} userId - The ID of the user.
  */
 
-let getAlbums = (userId) => {
+function getAlbums(userId) {
     let albums = [];
-    fetch(rootAPI + `albums/${userId}`)
+    fetch(`${rootAPI}albums/${userId}`)
         .then((response) => {
             albums.push(response);
         });
     return albums;
-};
+}
 
 
 /**
@@ -96,14 +96,14 @@ let getAlbums = (userId) => {
  * @param {number} userId - The ID of the user.
  */
 
-let getTodos = (userId) => {
+function getTodos(userId) {
     let todos = [];
     fetch(rootAPI + `todos/${userId}`)
         .then((response) => {
             todos.push(response);
         });
     return todos;
-};
+}
 
 
 /**
@@ -111,14 +111,14 @@ let getTodos = (userId) => {
  * @param {number} userId - The ID of the user.
  */
 
-let buildProfile = (userId) => {
+function buildProfile(userId) {
     let profile = {
         posts: getPosts(userId),
         albums: getAlbums(userId),
         todos: getTodos(userId)
     };
     return profile;
-};
+}
 
 let users = getUsers();
 console.log(users);
@@ -128,14 +128,6 @@ console.log(users);
  * click user with ID 1
  */
 
-setTimeout(() => {
-    // click on a user to see user profile
-    console.log( "Build Profile:", buildProfile(1) );
-    setTimeout(() => {
-        // click on a post to see post details and comments
-        console.log( viewPost(5) );
-        console.log( viewComments(5) );
-    }, 3000);
-}, 1000);
-
-
+console.log( "Build Profile:", buildProfile(1) );
+console.log( viewPost(5) );
+console.log( viewComments(5) );
