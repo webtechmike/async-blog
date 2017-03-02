@@ -9,6 +9,7 @@ const rootAPI = "https://jsonplaceholder.typicode.com/";
 
 /**
  * getUsers returns all users
+ * @returns {array} An array of users
  */
 
 function getUsers() {
@@ -22,6 +23,7 @@ function getUsers() {
 /**
  * getUser takes an ID and returns a user
  * @param {number} userId - The ID of the user.
+ * @returns {object} A user object
  */
 
 function getUser(userId) {
@@ -35,12 +37,18 @@ function getUser(userId) {
 /**
  * getPosts takes an userId and returns a user's 5 most recent posts
  * @param {number} userId - The ID of the user.
+ * @returns {object} A post object
  */
 
 function getPosts(userId) {
-    return fetch(`${rootAPI}posts/${userId}`)
+    return fetch(`${rootAPI}posts/`)
         .then(response => {
-            return response.json();
+            return response.json()
+                .then(posts => {
+                    return posts.filter(post => {
+                        return post.userId === userId;
+                    });
+                });
         });
 }
 
