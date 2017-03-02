@@ -5,7 +5,7 @@
  * Declare rootAPI api
  */
 
-let rootAPI = "https://jsonplaceholder.typicode.com/";
+const rootAPI = "https://jsonplaceholder.typicode.com/";
 
 /**
  * getUsers returns all users
@@ -13,11 +13,8 @@ let rootAPI = "https://jsonplaceholder.typicode.com/";
 
 function getUsers() {
     return fetch(`${rootAPI}users`)
-        .then((response) => {
-            return response;
-        }, (err) => {
-            console.log("Error:", err);
-            throw err;
+        .then(response => {
+            return response.json();
         });
 }
 
@@ -29,8 +26,8 @@ function getUsers() {
 
 function getUser(userId) {
     return fetch(`${rootAPI}users/${id}`)
-        .then((response) => {
-            return response;
+        .then(response => {
+            return response.json();
         });
 }
 
@@ -41,12 +38,10 @@ function getUser(userId) {
  */
 
 function getPosts(userId) {
-    let posts = [];
-    fetch(`${rootAPI}posts/${userId}`)
-        .then((response) => {
-            posts.push(response);
+    return fetch(`${rootAPI}posts/${userId}`)
+        .then(response => {
+            return response.json();
         });
-    return posts;
 }
 
 
@@ -57,8 +52,8 @@ function getPosts(userId) {
 
 function viewPost(postId) {
     return fetch(`${rootAPI}posts/${postId}`)
-        .then((response) => {
-            return response;
+        .then(response => {
+            return response.json();
         });
 }
 
@@ -70,7 +65,7 @@ function viewPost(postId) {
 
 function viewComments(postId) {
     return fetch(`${rootAPI}posts/${postId}/comments`)
-        .then((response) => {
+        .then(response => {
             return response;
         });
 }
@@ -82,12 +77,10 @@ function viewComments(postId) {
  */
 
 function getAlbums(userId) {
-    let albums = [];
-    fetch(`${rootAPI}albums/${userId}`)
-        .then((response) => {
-            albums.push(response);
+    return fetch(`${rootAPI}albums/${userId}`)
+        .then(response => {
+            return response.json();
         });
-    return albums;
 }
 
 
@@ -97,12 +90,10 @@ function getAlbums(userId) {
  */
 
 function getTodos(userId) {
-    let todos = [];
-    fetch(`${rootAPI}todos/${userId}`)
-        .then((response) => {
-            todos.push(response);
+    return fetch(`${rootAPI}todos/${userId}`)
+        .then(response => {
+            return response.json();
         });
-    return todos;
 }
 
 
