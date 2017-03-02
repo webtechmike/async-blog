@@ -109,6 +109,8 @@ function buildProfile(userId) {
 
     Promise.all([posts, albums, todos]).then(profile => {
         return {posts, albums, todos};
+    }).catch(reason => {
+        console.log("Failed:", reason);
     });
 }
 
