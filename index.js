@@ -103,17 +103,17 @@ function getTodos(userId) {
  */
 
 function buildProfile(userId) {
-    let profile = {
-        posts: getPosts(userId),
-        albums: getAlbums(userId),
-        todos: getTodos(userId)
-    };
-    return profile;
+    let posts = getPosts(userId);
+    let albums = getAlbums(userId);
+    let todos = getTodos(userId);
+
+    Promise.all([posts, albums, todos]).then(profile => {
+        return {posts, albums, todos};
+    });
 }
 
 let users = getUsers();
 console.log(users);
-
 
 /**
  * click user with ID 1
