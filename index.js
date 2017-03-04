@@ -108,6 +108,7 @@ function getTodos(userId) {
 /**
  * buildProfile takes a userId and builds a user's profile
  * @param {number} userId - The ID of the user.
+ * @returns an array of promises or a reason why any of these promises failed.
  */
 
 function buildProfile(userId) {
@@ -115,15 +116,15 @@ function buildProfile(userId) {
     let albums = getAlbums(userId);
     let todos = getTodos(userId);
 
-    Promise.all([posts, albums, todos]).then(profile => {
+    return Promise.all([posts, albums, todos]).then(profile => {
         return {posts, albums, todos};
     }).catch(reason => {
         console.log("Failed:", reason);
     });
 }
 
-let users = getUsers();
-console.log(users);
+// log out a list of users
+console.log(getUsers());
 
 /**
  * click user with ID 1
